@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang= "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>document</title>
+        <style>
+
+            table {
+                font-size: 1.5em;
+                text-align: center;
+            }
+            th,td {
+                padding : 10px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <select onchange="changeLang()">
+            <option id="select">選択してください</option>
+            <option id="selected_jpn">日本語</option>
+            <option id="selected_en">English</option>
+            <option id="selected_all">全て表示</option>
+        </select>
+        <table>
+            <tr>
+                <th>日本</th>
+                <td>こんにちは</td>
+                <td>ありがとう</td>
+                <td>さようなら</td>
+            </tr>
+            <tr>
+                <th>English</th>
+                <td>Hello</td>
+                <td>Thank you</td>
+                <td>Good Bye</td>
+            </tr>
+        </table>
+
+        <script>
+             //①onchangeで使用されている関数の中身を実装してください。
+             function changeLang() {
+
+                 //日本語の言語の取得
+                 const change1 = document.getElementById("selected_jpn");
+                 const change2 = document.getElementById("selected_en");
+                 const change3 = document.getElementById("selected_all");
+
+                 //console.log(change1.selected)
+                 //console.log(change2.selected)
+                 //console.log(change3.selected)
+
+                 //27~38行目までのtr内のタグの取得
+                 const tr = document.getElementsByTagName('tr');
+                 //console.log(tr[0])
+                 //console.log(tr[1])
+                 
+                 
+                 //change1が選択された場合、取得したtr 1つ目のtr[0]をblockで表示、2つ目のtr[1]をnoneで表示にし、日本語のみ表示
+                 if(change1.selected){
+
+                     tr[1].style.display = "none";
+                     tr[0].style.display = "block";
+                 }
+
+                //change2が選択された場合、取得したtr 1つ目のtr[0]をnoneで非表示に、2つ目のtr[1]をblockで表示にし、英語のみ表示
+                 else if(change2.selected){
+                     
+                     tr[1].style.display = "block";
+                     tr[0].style.display = "none";
+                     
+                 }
+
+                //change3が選択された場合、取得したtr 1つ目のtr[0],2つ目のtr[1]を共にblockで表示にし、全ての言語を表示
+                 else if(change3.selected){
+
+                     tr[0].style.display = "block";
+                     tr[1].style.display = "block";
+
+                 }
+             }
+
+        </script>
+    </body>
+</html>
